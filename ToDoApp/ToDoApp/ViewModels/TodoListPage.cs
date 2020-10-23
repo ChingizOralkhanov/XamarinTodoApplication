@@ -40,21 +40,21 @@ namespace ToDoApp.ViewModels
                         VerticalTextAlignment = TextAlignment.Center,
                         HorizontalOptions = LayoutOptions.StartAndExpand
                     };
-                    label.SetBinding(Label.TextProperty, "Name");
-
-                    var tick = new Image
+                    var status = new Label
                     {
-                        Source = ImageSource.FromFile("check.png"),
-                        HorizontalOptions = LayoutOptions.End
+                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalOptions = LayoutOptions.EndAndExpand
                     };
-                    tick.SetBinding(VisualElement.IsVisibleProperty, "Done");
+
+                    label.SetBinding(Label.TextProperty, "Name");
+                    status.SetBinding(Label.TextProperty, "Status");
 
                     var stackLayout = new StackLayout
                     {
                         Margin = new Thickness(20, 0, 0, 0),
                         Orientation = StackOrientation.Horizontal,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Children = { label, tick }
+                        Children = { label, status }
                     };
 
                     return new ViewCell { View = stackLayout };
